@@ -1,6 +1,6 @@
 # fut_card
 
-A new Flutter project.
+A FIFA's Ultimate Team mode based native app created with Flutter using Firebase as Database.
 
 ## Getting Started
 
