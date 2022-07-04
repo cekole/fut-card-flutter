@@ -1,0 +1,8 @@
+version: "Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)"
+options: "9a1a92567da5ba281853eeb8aa848932366c22d4c906cd6a3183548b7eafb970"
+build_start_time: [1656974913, 341487884]
+build_end_time: [1656974916, 449541091]
+inputs:
+  "/Users/cekole/Documents/GitHub/fut-card-flutter/macos/Flutter/GeneratedPluginRegistrant.swift": [1656974903, 777619361]
+  "/Users/cekole/Documents/GitHub/fut-card-flutter/macos/Runner/AppDelegate.swift": [1653017453, 0]
+  "/Users/cekole/Documents/GitHub/fut-card-flutter/macos/Runner/MainFlutterWindow.swift": [1653017453, 0]
