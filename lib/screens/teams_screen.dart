@@ -67,12 +67,16 @@ class _TeamsScreenState extends State<TeamsScreen> {
                 itemCount: teamData.teams.length,
               ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context).pushNamed(EditTeamsScreen.routeName);
-        },
-        child: Icon(Icons.add),
-        backgroundColor: Theme.of(context).backgroundColor,
+      floatingActionButton: Align(
+        alignment: Alignment.bottomCenter,
+        widthFactor: 7,
+        child: FloatingActionButton(
+          onPressed: () {
+            Navigator.of(context).pushNamed(EditTeamsScreen.routeName);
+          },
+          child: Icon(Icons.add),
+          backgroundColor: Theme.of(context).backgroundColor,
+        ),
       ),
     );
   }

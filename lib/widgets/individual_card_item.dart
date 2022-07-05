@@ -1,9 +1,11 @@
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:fut_card/providers/players.dart';
+import 'package:fut_card/screens/cart_screen.dart';
 import 'package:provider/provider.dart';
 
 class IndividualCardItem extends StatelessWidget {
@@ -267,20 +269,52 @@ class IndividualCardItem extends StatelessWidget {
             ),
           ),
           Positioned(
-            left: devSize.width * 0.395,
+            left: devSize.width * 0.378,
             top: devSize.height * 0.69,
             child: Container(
+              margin: EdgeInsets.only(left: 10, right: 10, top: 12),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 gradient: const LinearGradient(
                   colors: [
                     Color.fromARGB(160, 255, 235, 59),
-                    Color.fromARGB(255, 127, 169, 190),
+                    Color.fromARGB(255, 127, 169, 190)
                   ],
                 ),
               ),
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: ((ctx) => AlertDialog(
+                          backgroundColor: Color.fromARGB(255, 198, 241, 148),
+                          titleTextStyle: TextStyle(
+                            color: Theme.of(context).scaffoldBackgroundColor,
+                            fontSize: 20,
+                          ),
+                          title: Text('Added To Cart'),
+                          icon: Icon(
+                            Icons.check_circle_rounded,
+                            color: Colors.green,
+                          ),
+                          content: TextButton(
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all<Color>(
+                                  Colors.green),
+                            ),
+                            onPressed: () {
+                              customModalPopup(context);
+                            },
+                            child: Text(
+                              'Okay',
+                              style: TextStyle(
+                                  color: Theme.of(context)
+                                      .scaffoldBackgroundColor),
+                            ),
+                          ),
+                        )),
+                  );
+                },
                 child: Text(
                   'Add To Cart',
                   style: TextStyle(
@@ -293,6 +327,42 @@ class IndividualCardItem extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  void customModalPopup(BuildContext context) {
+    showCupertinoModalPopup(
+      barrierDismissible: false,
+      barrierColor: Color.fromARGB(150, 0, 0, 0),
+      context: context,
+      builder: ((context) {
+        return CupertinoActionSheet(
+          actions: [
+            CupertinoActionSheetAction(
+              onPressed: () {
+                Navigator.of(context).pushNamed(CartScreen.routeName);
+              },
+              child: Text(
+                'Go To Cart',
+                style: TextStyle(color: Theme.of(context).backgroundColor),
+              ),
+            ),
+          ],
+          cancelButton: CupertinoButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pop();
+            },
+            child: Text(
+              'Close',
+              style: TextStyle(
+                color: Theme.of(context).errorColor,
+                fontSize: 20,
+              ),
+            ),
+          ),
+        );
+      }),
     );
   }
 }

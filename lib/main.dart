@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:fut_card/providers/players.dart';
 import 'package:fut_card/providers/teams.dart';
 import 'package:fut_card/screens/cards_screen.dart';
+import 'package:fut_card/screens/cart_screen.dart';
 import 'package:fut_card/screens/edit_player_screen.dart';
 import 'package:fut_card/screens/edit_teams_screen.dart';
 import 'package:fut_card/screens/home_screen.dart';
 import 'package:fut_card/screens/players_screen.dart';
-import 'package:fut_card/screens/settings_screen.dart';
 import 'package:fut_card/screens/teams_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -44,9 +44,9 @@ class MyApp extends StatelessWidget {
           PlayersScreen.routeName: (context) => PlayersScreen(),
           CardsScreen.routeName: (context) => CardsScreen(),
           TeamsScreen.routeName: (context) => TeamsScreen(),
-          SettingsScreen.routeName: (context) => SettingsScreen(),
           EditPlayerScreen.routeName: (context) => EditPlayerScreen(),
           EditTeamsScreen.routeName: (context) => EditTeamsScreen(),
+          CartScreen.routeName: (context) => CartScreen(),
         },
       ),
     );

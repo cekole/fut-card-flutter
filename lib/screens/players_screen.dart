@@ -84,12 +84,16 @@ class _PlayersScreenState extends State<PlayersScreen> {
       ),
       floatingActionButton: ModalRoute.of(context)!.settings.arguments != null
           ? SizedBox()
-          : FloatingActionButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed(EditPlayerScreen.routeName);
-              },
-              child: Icon(Icons.add),
-              backgroundColor: Theme.of(context).backgroundColor,
+          : Align(
+              alignment: Alignment.bottomCenter,
+              widthFactor: 7,
+              child: FloatingActionButton(
+                onPressed: () {
+                  Navigator.of(context).pushNamed(EditPlayerScreen.routeName);
+                },
+                child: Icon(Icons.add),
+                backgroundColor: Theme.of(context).backgroundColor,
+              ),
             ),
     );
   }
