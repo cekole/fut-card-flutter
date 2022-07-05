@@ -60,6 +60,7 @@ class Players with ChangeNotifier {
           'defending': player.defending,
           'physical': player.physical,
           'overall': player.overall,
+          'price': player.price,
         },
       ),
     );
@@ -78,6 +79,7 @@ class Players with ChangeNotifier {
       team: player.team,
       imageUrl: player.imageUrl,
       clubImageUrl: player.clubImageUrl,
+      price: player.price,
     );
 
     _players.add(newPlayer);
@@ -116,6 +118,7 @@ class Players with ChangeNotifier {
             'defending': player.defending,
             'physical': player.physical,
             'overall': player.overall,
+            'price': player.price,
           },
         ),
       );
@@ -148,6 +151,7 @@ class Players with ChangeNotifier {
             team: playerData['team'],
             imageUrl: playerData['imageUrl'],
             clubImageUrl: playerData['clubImageUrl'],
+            price: playerData['price'],
           ),
         );
       },

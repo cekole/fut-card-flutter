@@ -11,6 +11,7 @@ class Player with ChangeNotifier {
   final int? defending;
   final int? physical;
   final int? overall;
+  final int? price;
   final String? nationality;
   final String? team;
   final String? imageUrl;
@@ -31,5 +32,6 @@ class Player with ChangeNotifier {
     required this.imageUrl,
     required this.clubImageUrl,
     required this.team,
+    required this.price,
   });
 }

@@ -76,6 +76,10 @@ class _CardsScreenState extends State<CardsScreen> {
                       .findById(
                           ModalRoute.of(context)!.settings.arguments.toString())
                       .overall,
+                  price: playerData
+                      .findById(
+                          ModalRoute.of(context)!.settings.arguments.toString())
+                      .price,
                   pace: playerData
                       .findById(
                           ModalRoute.of(context)!.settings.arguments.toString())
