@@ -6,24 +6,30 @@ import 'package:fut_card/widgets/balance_container.dart';
 import 'package:fut_card/widgets/cart_item.dart';
 import 'package:fut_card/widgets/custom_drawer.dart';
 import 'package:provider/provider.dart';
+import 'package:fut_card/user_info.dart' as globals;
 
-class CartScreen extends StatelessWidget {
+class CartScreen extends StatefulWidget {
   static const routeName = '/cart';
   const CartScreen({super.key});
 
   @override
+  State<CartScreen> createState() => _CartScreenState();
+}
+
+class _CartScreenState extends State<CartScreen> {
+  @override
   Widget build(BuildContext context) {
-    var balance = 50000;
     final cartData = Provider.of<Cart>(context, listen: false);
     return Scaffold(
       drawer: CustomDrawer(),
       appBar: AppBar(
         backgroundColor: Theme.of(context).backgroundColor,
-        title: Text(routeName.characters.skip(1).string.toUpperCase()),
+        title:
+            Text(CartScreen.routeName.characters.skip(1).string.toUpperCase()),
       ),
       body: Column(
         children: [
-          BalanceContainer(balance: balance),
+          BalanceContainer(balance: globals.balance),
           Expanded(
             child: ListView.separated(
               separatorBuilder: ((context, index) => Divider()),
@@ -40,7 +46,11 @@ class CartScreen extends StatelessWidget {
             ),
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              setState(() {
+                globals.balance -= 5000;
+              });
+            },
             child: Text('Order Now'),
           ),
         ],

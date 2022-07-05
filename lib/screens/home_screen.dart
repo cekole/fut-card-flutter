@@ -5,13 +5,13 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:fut_card/widgets/balance_container.dart';
 import 'package:fut_card/widgets/custom_drawer.dart';
 import 'package:fut_card/widgets/pages_grid.dart';
+import 'package:fut_card/user_info.dart' as globals;
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var balance = 50000;
     return Scaffold(
       drawer: CustomDrawer(),
       appBar: AppBar(
@@ -23,7 +23,7 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          BalanceContainer(balance: balance),
+          BalanceContainer(balance: globals.balance),
           Expanded(
             child: PagesGrid(),
           ),
