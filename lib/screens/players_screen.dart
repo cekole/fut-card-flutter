@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:fut_card/providers/players.dart';
 import 'package:fut_card/screens/edit_player_screen.dart';
+import 'package:fut_card/widgets/custom_drawer.dart';
 import 'package:fut_card/widgets/player_item.dart';
 import 'package:provider/provider.dart';
 
