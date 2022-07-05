@@ -284,7 +284,9 @@ class IndividualCardItem extends StatelessWidget {
                 child: Text(
                   'Add To Cart',
                   style: TextStyle(
-                      color: Colors.black87, fontStyle: FontStyle.italic),
+                    color: Colors.black87,
+                    fontStyle: FontStyle.italic,
+                  ),
                 ),
               ),
             ),
