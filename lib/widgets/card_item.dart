@@ -43,7 +43,7 @@ class CardItem extends StatelessWidget {
                 ? Image.network(
                     'https://cdn.shopify.com/s/files/1/0276/5635/5926/products/SILVER_1024x1024.png')
                 : Image.network(
-                    'https://pdf-service-static.s3.amazonaws.com/static/layout-images/cardstar/thumbnails/bronze.png'),
+                    'https://cdn.shopify.com/s/files/1/0276/5635/5926/products/nrbronze_1024x1024.png?v=1642028876'),
         Positioned(
           left: devSize.width * 0.09,
           top: devSize.height * 0.07,

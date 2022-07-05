@@ -43,7 +43,7 @@ class IndividualCardItem extends StatelessWidget {
                 ? Image.network(
                     'https://cdn.shopify.com/s/files/1/0276/5635/5926/products/SILVER_1024x1024.png')
                 : Image.network(
-                    'https://pdf-service-static.s3.amazonaws.com/static/layout-images/cardstar/thumbnails/bronze.png'),
+                    'https://cdn.shopify.com/s/files/1/0276/5635/5926/products/nrbronze_1024x1024.png?v=1642028876'),
         Positioned(
           left: devSize.width * 0.26,
           top: devSize.height * 0.14,
@@ -56,12 +56,18 @@ class IndividualCardItem extends StatelessWidget {
           ),
         ),
         Positioned(
-            left: devSize.width * 0.26,
-            top: devSize.height * 0.29,
-            child: Image.network(
-              clubImageUrl!,
-              scale: 3.5,
-            )),
+          left: overall! < 65 ? devSize.width * 0.24 : devSize.width * 0.26,
+          top: devSize.height * 0.29,
+          child: overall! > 65
+              ? Image.network(
+                  clubImageUrl!,
+                  scale: 3.5,
+                )
+              : Image.network(
+                  clubImageUrl!,
+                  scale: 3.8,
+                ),
+        ),
         Positioned(
           left: splitted[splitted.length - 1].characters.length <= 5
               ? devSize.width * 0.37
@@ -75,7 +81,7 @@ class IndividualCardItem extends StatelessWidget {
           ),
         ),
         Positioned(
-          height: devSize.height * 0.2,
+          height: overall! < 65 ? devSize.height * 0.19 : devSize.height * 0.2,
           left: devSize.width * 0.32,
           top: devSize.height * 0.16,
           child: Image.network(
