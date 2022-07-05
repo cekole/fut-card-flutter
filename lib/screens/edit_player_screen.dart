@@ -57,14 +57,17 @@ class _EditPlayerScreenState extends State<EditPlayerScreen> {
 
   void addTeamOfPlayer() {
     final teamsData = Provider.of<Teams>(context, listen: false);
-    teamsData.addTeam(
-      Team(
-        id: DateTime.now().toString(),
-        teamName: _editedPlayer.team,
-        foundationYear: -1,
-        imageUrl: _editedPlayer.clubImageUrl,
-      ),
-    );
+    if (!(teamsData.teams
+        .any((element) => element.teamName == _editedPlayer.team))) {
+      teamsData.addTeam(
+        Team(
+          id: DateTime.now().toString(),
+          teamName: _editedPlayer.team,
+          foundationYear: -1,
+          imageUrl: _editedPlayer.clubImageUrl,
+        ),
+      );
+    }
   }
 
   Future<void> _saveForm() async {
