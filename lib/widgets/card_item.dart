@@ -54,7 +54,7 @@ class CardItem extends StatelessWidget {
         ),
         Positioned(
           left: splittedName[splittedName.length - 1].characters.length <= 5
-              ? devSize.width * 0.18
+              ? devSize.width * 0.16
               : devSize.width * 0.15,
           top: devSize.height * 0.16,
           child: Text(

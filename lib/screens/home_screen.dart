@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:fut_card/widgets/balance_container.dart';
 import 'package:fut_card/widgets/custom_drawer.dart';
 import 'package:fut_card/widgets/pages_grid.dart';
 
@@ -10,7 +11,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var coins = 50000;
+    var balance = 50000;
     return Scaffold(
       drawer: CustomDrawer(),
       appBar: AppBar(
@@ -22,23 +23,7 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Container(
-            padding: const EdgeInsets.only(right: 8.0, top: 4.0),
-            color: Colors.black38,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                  '$coins',
-                  style: TextStyle(color: Colors.white, fontSize: 16),
-                ),
-                Icon(
-                  Icons.attach_money,
-                  color: Colors.green,
-                )
-              ],
-            ),
-          ),
+          BalanceContainer(balance: balance),
           Expanded(
             child: PagesGrid(),
           ),

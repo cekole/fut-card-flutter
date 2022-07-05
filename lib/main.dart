@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fut_card/providers/cart.dart';
 import 'package:fut_card/providers/players.dart';
 import 'package:fut_card/providers/teams.dart';
 import 'package:fut_card/screens/cards_screen.dart';
@@ -9,8 +10,6 @@ import 'package:fut_card/screens/home_screen.dart';
 import 'package:fut_card/screens/players_screen.dart';
 import 'package:fut_card/screens/teams_screen.dart';
 import 'package:provider/provider.dart';
-
-import 'providers/player.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,6 +28,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => Teams(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => Cart(),
         ),
       ],
       child: MaterialApp(
