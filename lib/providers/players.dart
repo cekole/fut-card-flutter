@@ -46,7 +46,11 @@ class Players with ChangeNotifier {
                   'png'
               ? player.imageUrl
               : 'https://www.fifacm.com/content/media/imgs/fifa22/players/notfound_player.png',
-          'clubImageUrl': player.clubImageUrl,
+          'clubImageUrl': (player.clubImageUrl!)
+                      .substring(player.clubImageUrl!.length - 3) ==
+                  'png'
+              ? player.clubImageUrl
+              : 'https://cdn.futbin.com/content/fifa22/img/clubs/114605.png',
           'team': player.team,
           'age': player.age,
           'pace': player.pace,
@@ -98,7 +102,11 @@ class Players with ChangeNotifier {
                     'png'
                 ? player.imageUrl
                 : 'https://www.fifacm.com/content/media/imgs/fifa22/players/notfound_player.png',
-            'clubImageUrl': player.clubImageUrl,
+            'clubImageUrl': (player.clubImageUrl!)
+                        .substring(player.clubImageUrl!.length - 3) ==
+                    'png'
+                ? player.clubImageUrl
+                : 'https://cdn.futbin.com/content/fifa22/img/clubs/114605.png',
             'team': player.team,
             'age': player.age,
             'pace': player.pace,

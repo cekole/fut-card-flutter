@@ -39,7 +39,10 @@ class Teams with ChangeNotifier {
         {
           'teamName': team.teamName,
           'foundationYear': team.foundationYear,
-          'imageUrl': team.imageUrl
+          'imageUrl': (team.imageUrl!).substring(team.imageUrl!.length - 3) ==
+                  'png'
+              ? team.imageUrl
+              : 'https://cdn.futbin.com/content/fifa22/img/clubs/114605.png',
         },
       ),
     );
