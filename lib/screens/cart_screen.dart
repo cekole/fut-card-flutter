@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:fut_card/providers/cart.dart';
+import 'package:fut_card/providers/orders.dart';
+import 'package:fut_card/providers/player.dart';
+import 'package:fut_card/providers/players.dart';
+import 'package:fut_card/screens/orders_screen.dart';
 import 'package:fut_card/widgets/balance_container.dart';
 import 'package:fut_card/widgets/cart_item.dart';
 import 'package:fut_card/widgets/custom_drawer.dart';
@@ -20,6 +24,8 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     final cartData = Provider.of<Cart>(context, listen: false);
+    final playerData = Provider.of<Players>(context, listen: false);
+
     return Scaffold(
       drawer: CustomDrawer(),
       appBar: AppBar(
@@ -35,20 +41,24 @@ class _CartScreenState extends State<CartScreen> {
               separatorBuilder: ((context, index) => Divider()),
               itemBuilder: (context, index) {
                 return CartItem(
-                  id: 'p1',
-                  price: 0,
-                  quantity: 2,
-                  title: 'test',
-                  playerId: 'player1',
+                  id: cartData.items.values.toList()[index].id!,
+                  price: cartData.items.values.toList()[index].price!,
+                  quantity: cartData.items.values.toList()[index].quantity!,
+                  title: cartData.items.values.toList()[index].title!,
+                  imageUrl: cartData.items.values.toList()[index].imageUrl!,
                 );
               },
-              itemCount: 2,
+              itemCount: cartData.items.values.length,
             ),
           ),
           TextButton(
             onPressed: () {
+              final orderData = Provider.of<Orders>(context, listen: false);
               setState(() {
-                globals.balance -= 5000;
+                orderData.addOrder(cartData.items.values.toList(), 20);
+                Navigator.of(context).pushNamed(OrdersScreen.routeName).then(
+                      (value) => globals.balance -= 5000,
+                    );
               });
             },
             child: Text('Order Now'),

@@ -4,11 +4,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:fut_card/providers/cart.dart';
+import 'package:fut_card/providers/player.dart';
 import 'package:fut_card/providers/players.dart';
 import 'package:fut_card/screens/cart_screen.dart';
 import 'package:provider/provider.dart';
 
 class IndividualCardItem extends StatelessWidget {
+  final String? id;
   final String? name;
   final int? overall;
   final int? price;
@@ -23,6 +26,7 @@ class IndividualCardItem extends StatelessWidget {
 
   const IndividualCardItem({
     super.key,
+    required this.id,
     required this.name,
     required this.overall,
     required this.price,
@@ -331,6 +335,8 @@ class IndividualCardItem extends StatelessWidget {
   }
 
   void customModalPopup(BuildContext context) {
+    final cartData = Provider.of<Cart>(context, listen: false);
+    final playerData = Provider.of<Players>(context, listen: false);
     showCupertinoModalPopup(
       barrierDismissible: false,
       barrierColor: Color.fromARGB(150, 0, 0, 0),
@@ -340,7 +346,14 @@ class IndividualCardItem extends StatelessWidget {
           actions: [
             CupertinoActionSheetAction(
               onPressed: () {
-                Navigator.of(context).pushNamed(CartScreen.routeName);
+                cartData.addItem(
+                  playerData.players.first.team!,
+                  playerData.players.first.price!,
+                  playerData.players.first.name!,
+                  playerData.players.first.imageUrl!,
+                );
+                Navigator.of(context)
+                    .pushNamed(CartScreen.routeName, arguments: id);
               },
               child: Text(
                 'Go To Cart',

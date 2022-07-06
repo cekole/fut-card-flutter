@@ -6,10 +6,10 @@ import 'package:provider/provider.dart';
 
 class CartItem extends StatelessWidget {
   final String id;
-  final String playerId;
-  final double price;
+  final int price;
   final int quantity;
   final String title;
+  final String? imageUrl;
 
   const CartItem({
     super.key,
@@ -17,7 +17,7 @@ class CartItem extends StatelessWidget {
     required this.price,
     required this.quantity,
     required this.title,
-    required this.playerId,
+    required this.imageUrl,
   });
 
   @override
@@ -37,31 +37,33 @@ class CartItem extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Chip(
-              backgroundColor: Color.fromARGB(96, 190, 150, 150),
-              avatar: CircleAvatar(
-                backgroundColor: Theme.of(context).backgroundColor,
-                child: FittedBox(child: Text(price.toStringAsFixed(2))),
-              ),
-              label: Text(
-                playerId,
-                style: TextStyle(fontSize: 20),
-              ),
+          Card(
+            shape: StadiumBorder(),
+            color: Color.fromARGB(95, 218, 255, 125),
+            child: Column(
+              children: [
+                Text(
+                  'Value: $price \$',
+                  style: TextStyle(fontSize: 20),
+                ),
+                Text(
+                  title,
+                  style: TextStyle(fontSize: 20),
+                ),
+              ],
             ),
           ),
           Spacer(),
           Column(
             children: [
               Image.network(
-                'https://cdn.futbin.com/content/fifa22/img/players/237067.png',
+                imageUrl!,
                 scale: 2,
               ),
             ],
           ),
           Container(
-            padding: EdgeInsets.all(6),
+            padding: EdgeInsets.all(3),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 color: Theme.of(context).backgroundColor),

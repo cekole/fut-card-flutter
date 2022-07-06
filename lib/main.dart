@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fut_card/providers/cart.dart';
+import 'package:fut_card/providers/orders.dart';
+import 'package:fut_card/providers/player.dart';
 import 'package:fut_card/providers/players.dart';
 import 'package:fut_card/providers/teams.dart';
 import 'package:fut_card/screens/cards_screen.dart';
@@ -7,6 +9,7 @@ import 'package:fut_card/screens/cart_screen.dart';
 import 'package:fut_card/screens/edit_player_screen.dart';
 import 'package:fut_card/screens/edit_teams_screen.dart';
 import 'package:fut_card/screens/home_screen.dart';
+import 'package:fut_card/screens/orders_screen.dart';
 import 'package:fut_card/screens/players_screen.dart';
 import 'package:fut_card/screens/teams_screen.dart';
 import 'package:provider/provider.dart';
@@ -32,6 +35,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => Cart(),
         ),
+        ChangeNotifierProvider(
+          create: (_) => Orders(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -49,6 +55,7 @@ class MyApp extends StatelessWidget {
           EditPlayerScreen.routeName: (context) => EditPlayerScreen(),
           EditTeamsScreen.routeName: (context) => EditTeamsScreen(),
           CartScreen.routeName: (context) => CartScreen(),
+          OrdersScreen.routeName: (context) => OrdersScreen(),
         },
       ),
     );

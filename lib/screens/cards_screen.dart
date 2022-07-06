@@ -68,6 +68,10 @@ class _CardsScreenState extends State<CardsScreen> {
             )
           : ModalRoute.of(context)!.settings.arguments != null
               ? IndividualCardItem(
+                  id: playerData
+                      .findById(
+                          ModalRoute.of(context)!.settings.arguments.toString())
+                      .id,
                   name: playerData
                       .findById(
                           ModalRoute.of(context)!.settings.arguments.toString())
