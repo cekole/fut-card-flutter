@@ -23,6 +23,7 @@ class CartScreen extends StatefulWidget {
 class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
+    final devSize = MediaQuery.of(context).size;
     final cartData = Provider.of<Cart>(context, listen: false);
     final playerData = Provider.of<Players>(context, listen: false);
 
@@ -51,17 +52,37 @@ class _CartScreenState extends State<CartScreen> {
               itemCount: cartData.items.values.length,
             ),
           ),
-          TextButton(
-            onPressed: () {
-              final orderData = Provider.of<Orders>(context, listen: false);
-              setState(() {
-                orderData.addOrder(cartData.items.values.toList(), 20);
-                Navigator.of(context).pushNamed(OrdersScreen.routeName).then(
-                      (value) => globals.balance -= 5000,
-                    );
-              });
-            },
-            child: Text('Order Now'),
+          Padding(
+            padding: EdgeInsets.only(
+              bottom: devSize.height * 0.3,
+            ),
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                gradient: const LinearGradient(
+                  colors: [
+                    Color.fromARGB(160, 255, 235, 59),
+                    Color.fromARGB(255, 127, 169, 190)
+                  ],
+                ),
+              ),
+              child: MaterialButton(
+                onPressed: () {
+                  final orderData = Provider.of<Orders>(context, listen: false);
+                  setState(() {
+                    orderData.addOrder(cartData.items.values.toList(), 20);
+                    Navigator.of(context)
+                        .pushNamed(OrdersScreen.routeName)
+                        .then(
+                          (value) => globals.balance -= 5000,
+                        );
+                  });
+                },
+                child: Text(
+                  'Order Now',
+                ),
+              ),
+            ),
           ),
         ],
       ),

@@ -41,8 +41,9 @@ class _PlayersScreenState extends State<PlayersScreen> {
   @override
   Widget build(BuildContext context) {
     var playerData = Provider.of<Players>(context);
+    var teamName = '';
     if (ModalRoute.of(context)!.settings.arguments != null) {
-      final teamName = ModalRoute.of(context)!.settings.arguments as String;
+      teamName = ModalRoute.of(context)!.settings.arguments as String;
       final teamPlayers = Provider.of<Players>(context).findByTeam(teamName);
       playerData.setPlayers = teamPlayers;
     }
@@ -63,25 +64,35 @@ class _PlayersScreenState extends State<PlayersScreen> {
                   backgroundColor: Colors.yellow,
                 ),
               )
-            : ListView.builder(
-                itemBuilder: ((context, index) {
-                  return PlayerItem(
-                    id: playerData.players[index].id,
-                    name: playerData.players[index].name,
-                    age: playerData.players[index].age,
-                    pace: playerData.players[index].pace,
-                    shooting: playerData.players[index].shooting,
-                    passing: playerData.players[index].passing,
-                    dribbling: playerData.players[index].dribbling,
-                    defending: playerData.players[index].defending,
-                    physical: playerData.players[index].physical,
-                    nationality: playerData.players[index].nationality,
-                    team: playerData.players[index].team,
-                    imageUrl: playerData.players[index].imageUrl,
-                  );
-                }),
-                itemCount: playerData.players.length,
-              ),
+            : playerData.players.isEmpty
+                ? Center(
+                    child: Text(
+                      'There Are No Players From $teamName',
+                      style: TextStyle(
+                        color: Color(0xff4de6eb),
+                        fontSize: 20,
+                      ),
+                    ),
+                  )
+                : ListView.builder(
+                    itemBuilder: ((context, index) {
+                      return PlayerItem(
+                        id: playerData.players[index].id,
+                        name: playerData.players[index].name,
+                        age: playerData.players[index].age,
+                        pace: playerData.players[index].pace,
+                        shooting: playerData.players[index].shooting,
+                        passing: playerData.players[index].passing,
+                        dribbling: playerData.players[index].dribbling,
+                        defending: playerData.players[index].defending,
+                        physical: playerData.players[index].physical,
+                        nationality: playerData.players[index].nationality,
+                        team: playerData.players[index].team,
+                        imageUrl: playerData.players[index].imageUrl,
+                      );
+                    }),
+                    itemCount: playerData.players.length,
+                  ),
       ),
       floatingActionButton: ModalRoute.of(context)!.settings.arguments != null
           ? SizedBox()

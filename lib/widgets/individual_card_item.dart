@@ -297,10 +297,6 @@ class IndividualCardItem extends StatelessWidget {
                             fontSize: 20,
                           ),
                           title: Text('Added To Cart'),
-                          icon: Icon(
-                            Icons.check_circle_rounded,
-                            color: Colors.green,
-                          ),
                           content: TextButton(
                             style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all<Color>(
@@ -346,12 +342,7 @@ class IndividualCardItem extends StatelessWidget {
           actions: [
             CupertinoActionSheetAction(
               onPressed: () {
-                cartData.addItem(
-                  playerData.players.first.team!,
-                  playerData.players.first.price!,
-                  playerData.players.first.name!,
-                  playerData.players.first.imageUrl!,
-                );
+                addCartDataItem(cartData, playerData);
                 Navigator.of(context)
                     .pushNamed(CartScreen.routeName, arguments: id);
               },
@@ -377,5 +368,16 @@ class IndividualCardItem extends StatelessWidget {
         );
       }),
     );
+  }
+
+  void addCartDataItem(Cart cartData, Players playerData) {
+    ListView.builder(itemBuilder: (context, index) {
+      return Text(cartData.addItem(
+        playerData.players[index].team!,
+        playerData.players[index].price!,
+        playerData.players[index].name!,
+        playerData.players[index].imageUrl!,
+      ));
+    });
   }
 }

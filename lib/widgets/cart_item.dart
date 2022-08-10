@@ -26,11 +26,11 @@ class CartItem extends StatelessWidget {
       margin: EdgeInsets.all(10),
       padding: EdgeInsets.all(20),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(5),
         gradient: const LinearGradient(
           colors: [
             Color.fromARGB(160, 255, 235, 59),
-            Color.fromARGB(255, 127, 169, 190)
+            Color.fromARGB(255, 127, 169, 190),
           ],
         ),
       ),
@@ -38,17 +38,23 @@ class CartItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Card(
-            shape: StadiumBorder(),
-            color: Color.fromARGB(95, 218, 255, 125),
+            shape:
+                BeveledRectangleBorder(borderRadius: BorderRadius.circular(5)),
+            color: Color.fromARGB(104, 127, 169, 190),
             child: Column(
               children: [
                 Text(
                   'Value: $price \$',
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 20, color: Colors.white70),
+                ),
+                SizedBox(
+                  height: 10,
                 ),
                 Text(
                   title,
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
                 ),
               ],
             ),
